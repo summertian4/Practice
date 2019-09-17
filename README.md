@@ -12,5 +12,5 @@
 | ------------------------------------------------------------ | --------------------------- | ---- |
 | [0002 两数相加](https://leetcode-cn.com/problems/add-two-numbers/) | [0002.py](LeetCode/0002.py) |      |
 |                                                              |                             |      |
-|                                                              |                             |      |
+| [0005 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/) | [0005.py](LeetCode/0005.py) |      |
 
