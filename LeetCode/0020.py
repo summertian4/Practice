@@ -1,51 +1,25 @@
-class Stack(object):
-    def __init__(self):
-         self.items = []
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
-    def is_empty(self):
-        return self.items == []
-
-    def push(self, item):
-        self.items.append(item)
-
-    def pop(self):
-        return self.items.pop()
-
-    def peek(self):
-        if len(self.items) == 0:
-            return False
-        return self.items[len(self.items)-1]
-
-    def size(self):
-        return len(self.items)
-
-class Solution:
-    def isValid(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        left = "([{"
-        right = ")]}"
-        stk = Stack()
-    
-        for i in range(0, s.__len__()):
-            c = s[i]
-            if left.find(c) != -1:
-                stk.push(c)
+class Solution(object):
+    def mergeTwoLists(self, l1, l2):
+        # dummy head
+        pos = dummyHead = ListNode(-1)
+        while l1 is not None and l2 is not None:
+            if l1.val <= l2.val:
+                pos.next = l1
+                l1 = l1.next
             else:
-                rightIndex = right.index(c)
-                condition0 = stk.peek() == left[rightIndex]
-                condition1 = stk.is_empty() == False
-                if condition0 and condition1:
-                    stk.pop()
-                else:
-                    return False
-                
-        return stk.is_empty()
-        
-s = Solution()
-
-result = s.isValid("]")
-print(result)
-        
+                pos.next = l2
+                l2 = l2.next
+            pos = pos.next
+        # merge residual l1
+        if l1 is not None:
+            pos.next = l1
+        # merge residual l2
+        if l2 is not None:
+            pos.next = l2
+        return dummyHead.next
